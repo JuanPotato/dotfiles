@@ -1,0 +1,10 @@
+[user]
+	email = hasantiny@gmail.com
+	name = Hasan Ibraheem
+	signingkey = C463E07AFEFDD4D24436E6553CB045F6B981DB45
+[color]
+	ui = auto
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg

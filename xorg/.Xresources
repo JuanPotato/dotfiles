@@ -1,0 +1,60 @@
+XTerm*faceName: Terminus:size=8:antialias=true
+XTerm.letterSpace: -1
+XTerm*renderFont: true
+XTerm*background: #000000
+XTerm*foreground: #cccccc
+XTerm*color0:  #000000
+XTerm*color1:  #cc3333
+XTerm*color2:  #33cc33
+XTerm*color3:  #cc8833
+XTerm*color4:  #3333cc
+XTerm*color5:  #cc33cc
+XTerm*color6:  #33cccc
+XTerm*color7:  #cccccc
+XTerm*color8:  #666666
+XTerm*color9:  #ff6666
+XTerm*color10: #66ff66
+XTerm*color11: #ffff66
+XTerm*color12: #6666ff
+XTerm*color13: #ff66ff
+XTerm*color14: #66ffff
+XTerm*color15: #ffffff
+XTerm*locale: true
+
+
+URxvt.font: -*-terminus-*-*-*-*-12-*-*-*-*-*-*-*
+
+!Xft.antialias: 1
+!Xft.hinting: 1
+!Xft.hintstyle: hintfull
+!URxvt.font: xft:Ubuntu Mono:pixelsize=12:antialias=true:hinting=true
+!URxvt.boldFont: xft:Ubuntu Mono:bold:pixelsize=14:antialias=true:hinting=true
+
+URxvt.renderFont: true
+URxvt.cursorColor: #cccccc
+URxvt.background: #000000
+URxvt.foreground: #cccccc
+URxvt.color0:  #000000
+URxvt.color1:  #cc3333
+URxvt.color2:  #33cc33
+URxvt.color3:  #cc8833
+URxvt.color4:  #3333cc
+URxvt.color5:  #cc33cc
+URxvt.color6:  #33cccc
+URxvt.color7:  #cccccc
+URxvt.color8:  #666666
+URxvt.color9:  #ff6666
+URxvt.color10: #66ff66
+URxvt.color11: #ffff66
+URxvt.color12: #6666ff
+URxvt.color13: #ff66ff
+URxvt.color14: #66ffff
+URxvt.color15: #ffffff
+URxvt.scrollBar: None
+
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+URxvt.secondaryWheel: 1
+
+URxvt.fading: 0
+URxvt.termName: rxvt-256color

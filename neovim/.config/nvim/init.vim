@@ -31,7 +31,7 @@ if dein#load_state('/home/juan/.local/share/dein')
   endif
   
   " Deoplete Rust
-  "call dein#add('sebastianmarkow/deoplete-rust')
+  call dein#add('sebastianmarkow/deoplete-rust')
 
   call dein#add('autozimu/LanguageClient-neovim', {
       \ 'rev': 'next',

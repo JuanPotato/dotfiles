@@ -48,8 +48,18 @@ bindsym --release Shift+Print exec screenshot
 # volume control
 bindsym XF86AudioRaiseVolume exec amixer set Master -q 2%+ unmute && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioLowerVolume exec amixer set Master -q 2%- unmute && pkill -RTMIN+10 i3blocks
-bindsym XF86AudioMute exec amixer -D pulse set Master -q toggle && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioMute exec amixer set Master -q toggle && pkill -RTMIN+10 i3blocks
 
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+
+# scratchpad
+exec --no-startup-id speedcrunch -name metask
+for_window [instance="metask"] floating enable;
+for_window [instance="metask"] move scratchpad; [instance="metask"] scratchpad show; move position 814px 22px; resize set height 200px; resize set width 301px; move scratchpad
+bindsym $mod+o [instance="metask"] scratchpad show
+bindsym $mod+SHIFT+o exec --no-startup-id speedcrunch -name metask
 
 # start a terminal
 bindsym $mod+Return exec alacritty
@@ -77,10 +87,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -168,6 +178,26 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+
+
+set $Locker i3lock && sleep 1
+
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+Delete mode "$mode_system"
+
 
 bindsym $mod+r mode "resize"
 

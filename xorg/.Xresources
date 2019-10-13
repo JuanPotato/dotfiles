@@ -1,4 +1,3 @@
-XTerm*faceName: Terminus:size=8:antialias=true
 XTerm.letterSpace: -1
 XTerm*renderFont: true
 XTerm*background: #000000
@@ -20,15 +19,16 @@ XTerm*color13: #ff66ff
 XTerm*color14: #66ffff
 XTerm*color15: #ffffff
 XTerm*locale: true
+XTerm*font: xft:xos4 Terminus:pixelsize=12:antialias=true:hinting=true
 
-
-URxvt.font: -*-terminus-*-*-*-*-12-*-*-*-*-*-*-*
 
 !Xft.antialias: 1
 !Xft.hinting: 1
 !Xft.hintstyle: hintfull
 !URxvt.font: xft:Ubuntu Mono:pixelsize=12:antialias=true:hinting=true
 !URxvt.boldFont: xft:Ubuntu Mono:bold:pixelsize=14:antialias=true:hinting=true
+
+URxvt.font: xft:xos4 Terminus:pixelsize=14:antialias=true:hinting=true
 
 URxvt.renderFont: true
 URxvt.cursorColor: #cccccc

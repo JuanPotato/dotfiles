@@ -4,35 +4,45 @@ if &compatible
 endif
 
 " Required:
-set runtimepath+=/home/juan/.local/share/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=/home/hasan/.local/share/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state('/home/juan/.local/share/dein')
-  call dein#begin('/home/juan/.local/share/dein')
+if dein#load_state('/home/hasan/.local/share/dein')
+  call dein#begin('/home/hasan/.local/share/dein')
 
   " Let dein manage dein
   " Required:
-  call dein#add('/home/juan/.local/share/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('/home/hasan/.local/share/dein/repos/github.com/Shougo/dein.vim')
 
   " Rust syntax
-  call dein#add('rust-lang/rust.vim')
+
   " Monokai theme
   call dein#add('crusoexia/vim-monokai')
+  
   " Autoformat for different langs
   call dein#add('Chiel92/vim-autoformat')
+  
   " Dein command
   call dein#add('haya14busa/dein-command.vim')
 
-  " Autocomplete
-  call dein#add('Shougo/deoplete.nvim')
-  if !has('nvim')
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
-  endif
-  
-  " Deoplete Rust
-  call dein#add('sebastianmarkow/deoplete-rust')
+  " Graphviz
+  call dein#add('wannesm/wmgraphviz.vim')
 
+  " Setup for rust
+  " Rust Syntax with rust.vim
+  call dein#add('rust-lang/rust.vim')
+
+  " Completion Manager
+  call dein#add('ncm2/ncm2')
+  " Rust completetion
+  call dein#add('ncm2/ncm2-racer')
+  " C/C++ completion
+  call dein#add('ncm2/ncm2-pyclang')
+  " Python completion
+  call dein#add('ncm2/ncm2-jedi')
+
+
+  " Language Server that has good stuff 
   call dein#add('autozimu/LanguageClient-neovim', {
       \ 'rev': 'next',
       \ 'build': 'bash install.sh',
@@ -96,21 +106,20 @@ ca w!! w !sudo tee %
 command Config tabe ~/.config/nvim/init.vim
 ca source! source ~/.config/nvim/init.vim
 
-"let g:ale_linters = {'rust': ['rls']}
-
-let g:deoplete#sources#rust#racer_binary='/home/juan/.cargo/bin/racer'
-let g:deoplete#sources#rust#rust_source_path='/home/juan/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
-
-let g:deoplete#enable_at_startup = 1
-
 
 " Required for operations modifying multiple buffers like rename.
 set hidden
 
+" LanguageClient
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ 'python': ['pyls'],
+    \ 'rust': ['rustup', 'run', 'beta', 'rls'],
+    \ 'c': ['ccls', '--log-file=/tmp/cc.log'],
+    \ 'cpp': ['ccls', '--log-file=/tmp/cc.log'],
+    \ 'cuda': ['ccls', '--log-file=/tmp/cc.log'],
+    \ 'objc': ['ccls', '--log-file=/tmp/cc.log'],
     \ }
+
+" \ 'python': ['pyls'],
 
 let g:LanguageClient_diagnosticsDisplay={}
 
@@ -121,6 +130,9 @@ for i in [2, 3, 4]
     let g:LanguageClient_diagnosticsDisplay[i] = { 'signText': '--' }
 endfor
 
+
+" ncm2
+let g:ncm2_pyclang#library_path = '/usr/lib64/libclang.so'
 
 hi ALEError   ctermbg=1 
 hi ALEWarning ctermbg=3
@@ -143,11 +155,16 @@ highlight link ALEStyleWarning ALEWarning
 
 
 
-let g:deoplete#enable_at_startup = 1
+" Die time
+" Disable Arrow keys in Normal mode
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
 
-call deoplete#custom#source('_', 'disabled_syntaxes', ['Comment', 'String'])
+" Disable Arrow keys in Insert mode
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
 
-let g:deoplete#sources#rust#disable_keymap=1
-
-nmap <buffer> gd <plug>DeopleteRustGoToDefinitionTab
-nmap <buffer> K  <plug>DeopleteRustShowDocumentation
